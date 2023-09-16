@@ -9,16 +9,16 @@ data ends
 
 code segment
 start:
-mov ax, data
-mov ds, ax
-mov ax, b
-mov bx, d
-add ax, bx
-mov cx, a
-mov bx, c
-imul cx
-imul bx
-sub ax, 1
+	mov ax, data
+	mov ds, ax
+	mov ax, b
+	mov bx, d
+	add ax, bx
+	mov cx, a
+	mov bx, c
+	imul cx
+	imul bx
+	sub ax, 1
 code ends
 end start
 
