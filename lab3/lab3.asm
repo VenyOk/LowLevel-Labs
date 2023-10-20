@@ -1,10 +1,15 @@
 assume CS:code, DS:data
 data segment
     dummy db 0Dh, 0Ah, '$'
-    str1 db 97, 99 dup ('$')
-    str2 db 97, 99 dup ('$')
+    str1 db 100, 101 dup ('$')
+    str2 db 100, 101 dup ('$')
     buf db 11 dup(' ') , '$'
 data ends
+
+
+;  РЕАЛИЗАЦИЯ ФУНКЦИИ STRCMP
+
+
 
 code segment
 strcmp proc
@@ -22,8 +27,9 @@ compare_loop:
 
     
     cmp al, '$'    
-    je equal       
-
+    je equal_A      
+	cmp bl, '$'
+	je equal_B
     
     inc si
     inc di
@@ -32,12 +38,22 @@ compare_loop:
 not_equal:
     cmp al, bl
     jl less_than   
-    jg greater_than ; 
+    jg greater_than 
 
-equal:
-    mov ax, 0       
+equal_A:
+	cmp bl, '$'
+	je zero
+	jmp greater_than
+	
+equal_B:
+	cmp al, '$'
+	je zero
+	jmp less_than
+
+zero:    
+	mov ax, 0       
     jmp done
-
+	
 less_than:
     mov ax, -1      
     jmp done
