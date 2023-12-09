@@ -17,6 +17,7 @@ input macro string
 endm
 
 solve macro string, result
+    local search_first_symbol, search_spaces, insert_space, need_to_insert_space, continue, insert_symb, continue_macro
 
     mov si, offset string
     inc si
