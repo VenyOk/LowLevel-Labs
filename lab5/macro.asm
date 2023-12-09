@@ -18,6 +18,7 @@ endm
 
 
 solve macro string, symb, result
+	local search_symb_loop, found, continue, enter_symb, need_to_move_loop, part_of_loop, plus_si, not_to_move, not_to_move_loop, end_macros
 
     xor ax, ax
     mov si, offset string
